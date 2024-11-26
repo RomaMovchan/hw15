@@ -6,7 +6,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "username": "janedoe",
+  "username": "robodreams",
   "password": "securepassword"
 }
 
@@ -19,12 +19,16 @@ Content-Type: application/json
 }
 
 
+###{
+ ### "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYm9kcmVhbXMiLCJzdWIiOjMsImlhdCI6MTczMjY0ODg4NiwiZXhwIjoxNzMyNjU5Njg2fQ.2bEwzB3UijG-OQYy-d8aAZh5h3mw1kuleu_I4E9ilz4",
+ ### "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYm9kcmVhbXMiLCJzdWIiOjMsImlhdCI6MTczMjY0ODg4NiwiZXhwIjoxNzMzMjUzNjg2fQ._KWzj18KdNjMWNi5--k77__luxI_lK8cH73WaFTG-u0"
+###}
 ### Login and get tokens
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "janedoe",
+  "username": "robodreams",
   "password": "securepassword"
 }
 

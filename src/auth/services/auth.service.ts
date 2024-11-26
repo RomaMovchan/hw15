@@ -23,7 +23,32 @@ export class AuthService {
     return null;
   }
 
+  async validateToken(token: string): Promise<boolean> {
+    try {
+      const decoded = this.jwtService.verify(token); // It will throw an error if the token is invalid
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
   async login(user: any) {
+    const token = await this.tokensService.findAccessTokenUserId(user.id);
+    if (token) {
+      const isAccessTokenValid = this.validateToken(token.access_token);
+      const isRefreshTokenValid = this.validateToken(token.access_token);
+
+      if (isAccessTokenValid && isRefreshTokenValid) {
+        return {
+          access_token: token.access_token,
+          refresh_token: token.refresh_token,
+        }
+      } else {
+        await this.tokensService.deleteAccessToken(token.access_token);
+        await this.tokensService.deleteRefreshToken(token.access_token);
+      }
+    }
+
     const payload = { username: user.username, sub: user.id };
     const accessToken = this.jwtService.sign(payload, { expiresIn: '3h' });
     const refreshToken = this.jwtService.sign(payload, { expiresIn: '7d' });

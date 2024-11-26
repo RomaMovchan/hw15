@@ -24,6 +24,14 @@ export class TokensService {
     return result.rows[0];
   }
 
+  async findAccessTokenUserId(userId: number): Promise<any> {
+    const result = await this.pool.query(
+      'SELECT * FROM tokens WHERE user_id = $1',
+      [userId],
+    );
+    return result.rows[0];
+  }
+
   async findRefreshToken(refreshToken: string): Promise<any> {
     const result = await this.pool.query(
       'SELECT * FROM tokens WHERE refresh_token = $1',
