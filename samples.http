@@ -1,0 +1,57 @@
+### Get user by username
+GET http://localhost:3000/users/janedoe
+
+### Create a new user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "username": "janedoe",
+  "password": "securepassword"
+}
+
+### Get token from token
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+
+{
+"refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbmVkb2UiLCJzdWIiOjMsImlhdCI6MTczMjA2Mzg4MCwiZXhwIjoxNzMyNjY4NjgwfQ.uYOhLnAOIBCTw69KYDZrIXXhrLRtr9YyPLXQbS4xoUI"
+}
+
+
+### Login and get tokens
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "username": "janedoe",
+  "password": "securepassword"
+}
+
+
+### Get all tweets
+GET http://localhost:3000/tweets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbmVkb2UiLCJzdWIiOjMsImlhdCI6MTczMjA2MzAzOSwiZXhwIjoxNzMyMDczODM5fQ.t9WQ2L9VzaeDyIiSlDdEsd6er_WMBJu5VOggsie_3JQ
+
+### Create a new tweet
+POST http://localhost:3000/tweets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJzdWIiOjEsImlhdCI6MTczMjA2MzQxNywiZXhwIjoxNzMyMDc0MjE3fQ.G0EMpLtm1hNFCJQCe2ZV07OYTszmaLnLyerd92_NBZc
+
+{
+  "username": "johndoe",
+  "content": "This is my first tweet!"
+}
+
+### Update a tweet
+PUT http://localhost:3000/tweets/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJzdWIiOjEsImlhdCI6MTczMjA1OTgyNSwiZXhwIjoxNzMyMDcwNjI1fQ.V5Idtdd2aBtqDz-uFfRJL7HnNsWwDUL77YOK8p59MIw
+
+{
+  "content": "This is my updated tweet!"
+}
+
+### Delete a tweet
+DELETE http://localhost:3000/tweets/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphbmVkb2UiLCJzdWIiOjMsImlhdCI6MTczMjA2MzQ3MSwiZXhwIjoxNzMyMDc0MjcxfQ.1i5ISA3E_11sJNXHItZq5a2qKCx3ebcVQYR0i1J6GUQ
