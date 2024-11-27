@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { TokensService } from './services/tokens.service';
+import { WebsocketGateway } from './guards/websocket.gateway';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { TokensService } from './services/tokens.service';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, TokensService],
+  providers: [AuthService, TokensService, WebsocketGateway],
   exports: [TokensService],
 })
 export class AuthModule {}
